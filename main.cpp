@@ -1,12 +1,20 @@
 #include <iostream>
-
+#include <fstream>
 #include "caesar__cipher.h"
 #include "athenian_cipher.h"
 #include "recurrent_cipher.h"
 
 int main() {
-    RecurrentCipher c(3, 10, 2, 12);
+    RecurrentCipher c(13, 15, 2, 14);
 
-    std::cout << c.encode("my mother name is alena") << "\n";
-    std::cout << c.decode(c.encode("my mother name is alena")) << "\n";
+    std::ifstream in("input.txt");
+
+    std::string res;
+    for (std::string line; std::getline(in, line);) {
+        res += line + " ";
+    }
+
+    std::string s = c.encode(res);
+    std::cout << s << "\n";
+    std::cout << c.crack(s) << "\n";
 }

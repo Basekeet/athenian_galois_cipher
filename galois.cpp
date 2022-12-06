@@ -14,10 +14,10 @@ galois_num prod(galois_num a, galois_num b) {
     galois_num res = 0;
 
     galois_num i = 0;
-    while ((1 << i) <= a) {
+    while ((1ull << i) <= a) {
         galois_num j = 0;
-        while ((1 << j) <= b) {
-            if (((1 << i) & a) && ((1 << j) & b)) {
+        while ((1ull << j) <= b) {
+            if (((1ull << i) & a) && ((1ull << j) & b)) {
                 res ^= (1 << (i + j));
             }
             j++;
@@ -39,7 +39,7 @@ galois_num divide(galois_num a, galois_num b) {
 galois_num normalize(galois_num a) {
     galois_num curr = X5;
     unsigned long long shift = G_N;
-    while ((1 << shift) <= a) {
+    while ((1ull << shift) <= a) {
         a = sum(a, a & (1 << shift) ? curr : 0);
         a = sum(a, a & (1 << shift));
         curr = normalize(curr * G_P);
