@@ -4,6 +4,7 @@
 
 #include <string>
 
+#include <map>
 #include "cipher.h"
 #include "galois.h"
 
